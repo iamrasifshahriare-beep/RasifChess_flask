@@ -1,0 +1,33 @@
+<html>
+<body>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='study.css') }}">
+</head>
+
+<h1>Daily Progress</h1>
+
+<form method="POST">
+
+{% for s in sectors %}
+
+<p>
+{{s.name}}
+<input type="number" name="{{s.id}}" min="0" max="10">
+</p>
+
+{% endfor %}
+
+<button type="submit">Save Progress</button>
+
+</form>
+
+<br>
+
+<a href="/history">Daily History</a>
+<br>
+<a href="/weekly">Weekly Summary</a>
+<br>
+<a href="/sectors">Manage Sectors</a>
+
+</body>
+</html>

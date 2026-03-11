@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Routine Tracker</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="container">
+
+<h1>Daily Routine Tracker</h1>
+
+<a class="add-btn" href="/add">Add Task</a>
+
+
+
+<table border="1">
+
+<tr>
+<th>Task</th>
+<th>Start</th>
+<th>End</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for task in tasks %}
+
+<tr>
+<td>{{task["task"]}}</td>
+<td>{{task["start_time"]}}</td>
+<td>{{task["end_time"]}}</td>
+
+<td>
+
+{% if task["completed"] == 1 %}
+<span class="done">Done</span>
+{% else %}
+<span class="pending">Pending</span>
+{% endif %}
+</td>
+
+
+<td>
+<a class="complete-btn" href="/complete/{{task['id']}}">Complete</a>
+<a class="delete-btn" href="/delete/{{task['id']}}">Delete</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

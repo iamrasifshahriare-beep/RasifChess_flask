@@ -1,0 +1,41 @@
+<html>
+<body>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='study.css') }}">
+</head>
+
+<h1>Manage Sectors</h1>
+
+<h3>Add Sector</h3>
+
+<form method="POST">
+
+<input name="name">
+
+<button>Add</button>
+
+</form>
+
+<h3>Existing</h3>
+
+{% for s in sectors %}
+
+<form action="/update_sector/{{s.id}}" method="POST">
+
+<input name="name" value="{{s.name}}">
+
+<button>Update</button>
+
+<a href="/delete_sector/{{s.id}}">Delete</a>
+
+</form>
+
+{% endfor %}
+
+<br>
+
+<a href="/">Back</a>
+
+</body>
+</html>

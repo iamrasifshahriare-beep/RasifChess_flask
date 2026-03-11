@@ -1,0 +1,144 @@
+/* Global settings */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background: linear-gradient(120deg,#4facfe,#00f2fe);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Main container */
+
+.container{
+    width:90%;
+    max-width:900px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Title */
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+}
+
+/* Buttons */
+
+a, button{
+    text-decoration:none;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.add-btn{
+    background:#4CAF50;
+    color:white;
+}
+
+.add-btn:hover{
+    background:#43a047;
+}
+
+/* Table */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:#4facfe;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+}
+
+/* Task status */
+
+.done{
+    color:green;
+    font-weight:bold;
+}
+
+.pending{
+    color:#ff9800;
+    font-weight:bold;
+}
+
+/* Action buttons */
+
+.complete-btn{
+    background:#2196f3;
+    color:white;
+}
+
+.complete-btn:hover{
+    background:#1976d2;
+}
+
+.delete-btn{
+    background:#f44336;
+    color:white;
+}
+
+.delete-btn:hover{
+    background:#d32f2f;
+}
+
+/* Form styling */
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input{
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+input:focus{
+    outline:none;
+    border-color:#4facfe;
+}
+
+/* progress bar */
+
+.progress-container{
+    margin-top:20px;
+}
+
+.progress-bar{
+    width:100%;
+    background:#eee;
+    border-radius:10px;
+}
+
+.progress{
+    height:15px;
+    background:#4CAF50;
+    border-radius:10px;
+}

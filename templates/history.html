@@ -1,0 +1,56 @@
+<html>
+<body>
+
+<head>
+
+</head>
+
+<h1>Progress History</h1>
+
+<table border ="1">
+
+<tr>
+<th>Sector</th>
+<th>Value</th>
+<th>Date</th>
+    <th>Edit</th>
+<th>Delete</th>
+</tr>
+
+{% for row in data %}
+
+<tr>
+
+<td>{{row.name}}</td>
+
+<td>
+<form action="/edit/{{row.id}}" method="POST">
+<input name="value" value="{{row.value}}" style="width:60px">
+<button>Update</button>
+</form>
+</td>
+
+<td>{{row.day}}</td>
+
+<td></td>
+
+<td>
+<a href="/delete/{{row.id}}">Delete</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/reset">RESET ALL HISTORY</a>
+
+<br><br>
+
+<a href="/">Back</a>
+
+</body>
+</html>
