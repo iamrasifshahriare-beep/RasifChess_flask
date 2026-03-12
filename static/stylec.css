@@ -9,3 +9,13 @@ canvas {
     border: 2px solid black;
     margin-top: 20px;
 }
+
+.timer-container{
+    display:flex;
+    justify-content:space-between;
+    width:400px;
+    margin-bottom:10px;
+    font-size:22px;
+    font-weight:bold;
+}
+
