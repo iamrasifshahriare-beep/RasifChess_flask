@@ -260,7 +260,7 @@ startTimer();
 drawBoard();
 
 
-console.log(tileSize)
+
 
 
 
