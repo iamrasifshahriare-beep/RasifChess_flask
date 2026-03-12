@@ -1,57 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Routine Tracker</title>
 
+    <title>Full Chess Game</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
 </head>
-
 <body>
-<div class="container">
-
-<h1>Daily Routine Tracker</h1>
-
-<a class="add-btn" href="/add">Add Task</a>
 
 
 
-<table border="1">
-
-<tr>
-<th>Task</th>
-<th>Start</th>
-<th>End</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
-
-{% for task in tasks %}
-
-<tr>
-<td>{{task["task"]}}</td>
-<td>{{task["start_time"]}}</td>
-<td>{{task["end_time"]}}</td>
-
-<td>
-
-{% if task["completed"] == 1 %}
-<span class="done">Done</span>
-{% else %}
-<span class="pending">Pending</span>
-{% endif %}
-</td>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
 
 
-<td>
-<a class="complete-btn" href="/complete/{{task['id']}}">Complete</a>
-<a class="delete-btn" href="/delete/{{task['id']}}">Delete</a>
-</td>
 
-</tr>
+    <div id="blackTimer">Black: 10:00</div>
 
-{% endfor %}
 
-</table>
+
+<canvas id="chessCanvas" width="840" height="840" > </canvas>
+<div id="whiteTimer">White: 10:00</div>
+<script src="{{ url_for('static', filename='js/board.js') }}"></script>
+<script src="{{ url_for('static', filename='js/rules.js') }}"></script>
+<script src="{{ url_for('static', filename='js/moves.js') }}"></script>
+<script src="{{ url_for('static', filename='js/games.js') }}"></script>
 
 </body>
 </html>
