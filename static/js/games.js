@@ -4,6 +4,7 @@ let rookMoved={white:{h:false,a:false},black:{h:false,a:false}};
 let whiteTime=600;
 let blackTime=600;
 let timerInterval=null;
+let enPassantTarget = null;
 
 function updateTimerDisplay(){
 
@@ -51,6 +52,22 @@ clearInterval(timerInterval);
 
 }
 
+function getLegalMoves(row,col){
+
+legalMoves = [];
+
+for(let r=0;r<8;r++){
+for(let c=0;c<8;c++){
+
+if(isLegalMove(row,col,r,c)){
+legalMoves.push({row:r,col:c});
+}
+
+}
+}
+
+}
+
 canvas.addEventListener("click",e=>{
 
 const rect=canvas.getBoundingClientRect();
@@ -62,22 +79,30 @@ if(selected){
 
 if(isLegalMove(selected.row,selected.col,row,col)){
 
-let piece=pieces[selected.row][selected.col];
+    // makeMove() handles: en passant capture removal,
+    // castling rook movement, rook/king moved flags,
+    // pawn promotion, and enPassantTarget tracking.
+    makeMove(selected.row, selected.col, row, col);
 
-pieces[row][col]=piece;
-pieces[selected.row][selected.col]="";
+    selected=null;
+    legalMoves=[];
 
-if(piece==="♙" && row===0) pieces[row][col]="♕";
-if(piece==="♟" && row===7) pieces[row][col]="♛";
+    turn = turn==="white" ? "black" : "white";
 
-selected=null;
+    updateTimerDisplay();
+    drawBoard();
 
-turn = turn==="white" ? "black" : "white";
-
-updateTimerDisplay();
+    if(isCheckmate(turn)){
+        let winner = turn === "white" ? "Black" : "White";
+        alert(winner + " wins by checkmate!");
+        clearInterval(timerInterval);
+    } else if(isKingInCheck(turn)){
+        alert(turn.charAt(0).toUpperCase() + turn.slice(1) + " is in check!");
+    }
 
 }else{
-selected=null;
+    selected=null;
+    drawBoard();
 }
 
 }else{
@@ -88,29 +113,20 @@ let color=getColor(pieces[row][col]);
 
 if(color===turn){
 selected={row:row,col:col};
-}
-
+getLegalMoves(row,col);
 }
 
 }
 
 drawBoard();
+
+}
 
 });
 
 updateTimerDisplay();
 startTimer();
 drawBoard();
-
-
-
-if(isKingInCheck(turn)){
-    alert(turn + " is in check!");
-}
-
-if(isCheckmate(turn)){
-    alert(turn + " is checkmated!");
-}
 
 if ("serviceWorker" in navigator) {
 navigator.serviceWorker.register("/static/sw.js")
