@@ -4,7 +4,7 @@
 
     <title>Full Chess Game</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
 </head>
 <body>
 
@@ -28,6 +28,16 @@
 <script src="{{ url_for('static', filename='js/rules.js') }}"></script>
 <script src="{{ url_for('static', filename='js/moves.js') }}"></script>
 <script src="{{ url_for('static', filename='js/games.js') }}"></script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register("{{ url_for('static', filename='service-worker.js') }}")
+  .then(() => console.log("Service Worker Registered"))
+  .catch(err => console.log("SW registration failed:", err));
+}
+</script>
+
 
 </body>
 </html>
