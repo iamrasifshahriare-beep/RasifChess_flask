@@ -6,6 +6,7 @@ let blackTime=600;
 let timerInterval=null;
 let enPassantTarget = null;
 
+
 function updateTimerDisplay(){
 
 let wMin=Math.floor(whiteTime/60);
@@ -67,6 +68,8 @@ legalMoves.push({row:r,col:c});
 }
 
 }
+
+
 
 canvas.addEventListener("click",e=>{
 
@@ -132,3 +135,4 @@ if ("serviceWorker" in navigator) {
 navigator.serviceWorker.register("/static/sw.js")
 .then(() => console.log("Service Worker Registered"));
 }
+

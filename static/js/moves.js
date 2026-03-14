@@ -309,6 +309,7 @@ function isCheckmate(color) {
 }
 
 function makeMove(fr, fc, tr, tc) {
+
     let piece = pieces[fr][fc];
 
     // Handle en passant capture: remove the captured pawn
@@ -368,3 +369,4 @@ function makeMove(fr, fc, tr, tc) {
     if (piece === "♙" && fr === 6 && tr === 4) enPassantTarget = { row: 5, col: tc };
     if (piece === "♟" && fr === 1 && tr === 3) enPassantTarget = { row: 2, col: tc };
 }
+
